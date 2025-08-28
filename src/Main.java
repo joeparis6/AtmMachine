@@ -1,9 +1,12 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static double balance = 5000.00;
+
     public static void main(String[] args) throws Exception {
 
         System.out.println("Welcome to the ATM Machine.");
@@ -51,8 +54,6 @@ public class Main {
             }
         }
         scanner.close();
-
-
     }
 
     static void displayOptions() {
@@ -64,7 +65,8 @@ public class Main {
     }
 
     static void printBalance() {
-        System.out.println("Balance: " + balance);
+        BigDecimal bd = new BigDecimal(balance).setScale(2, RoundingMode.HALF_UP);
+        System.out.println("Balance: " + bd);
     }
 
     static void withdraw(double withdrawalAmount) throws Exception {
